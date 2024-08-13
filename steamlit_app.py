@@ -38,8 +38,9 @@ if ingredients_list:
  #           values ('""" + ingredients_string + """','""" + name_on_order + """')"""
 
 #clean insert statement
-query = f"INSERT INTO orders (ingredients, name) VALUES ('{ingredients_string}', '{name_on_order}')"
-cursor.execute(query)
+query = "INSERT INTO orders (ingredients, name) VALUES (%s, %s)"
+cursor.execute(query, (ingredients_string, name_on_order))
+
 
 #st.write(my_insert_stmt)
 #st.stop()
