@@ -1,6 +1,5 @@
 # Import python packages
 import streamlit as st
-import requests
 from snowflake.snowpark.functions import col
 
 # Write directly to the app
@@ -25,7 +24,7 @@ st.write("The Name on your smoothie will be", name_on_order)
 
 
 
-
+import requests
 if ingredients_list:
     ingredients_string = ''
     
