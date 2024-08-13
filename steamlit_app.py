@@ -21,14 +21,18 @@ ingredients_list = st.multiselect ('Choose upt to 5 ingredients:', my_dataframe
 
 name_on_order = title = st.text_input("Name on Smoothie")
 st.write("The Name on your smoothie will be", name_on_order)
+
+
 import requests
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+fv_df = st.dataframe(data= fruityvice_response.json(), use_container_width =True)
 
 if ingredients_list:
     ingredients_string = ''
     
     for fruit_chosen in ingredients_list:
             ingredients_string += fruit_chosen + ' '
-            st.subheader(fruit_chosen+ 'Nutrition Information')
+            st.subheader(fruit_chosen+ ' Nutrition Information')
             fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon"+ fruit_chosen)
             fv_df = st.dataframe(data= fruityvice_response.json(), use_container_width =True)
 
